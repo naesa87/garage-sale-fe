@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Listing from "./Listing"
+import Listing from "../Listing"
 import './Listings.css';
 
 

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import logo from '../logo.svg';
+import logo from './Listings/laptop.jpg';
 
 class Listing extends Component {
     render() {
         return (
             <div className="col-md-6 listing">
-                    <img src={'laptop.jpg'} className="listing-image"/>
+                    <img src={logo} className="listing-image"/>
                     <div className="listing-heading">
                         <h2> {this.props.listing.title} </h2>
                         <p> {this.props.listing.serialNumber} </p>
