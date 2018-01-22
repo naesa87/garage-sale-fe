@@ -1,0 +1,20 @@
+.listing {
+    border: #A9A9A9 solid 1px;
+}
+.list-content {
+    margin: 15px;
+}
+
+.listing-image {
+    min-width: 20px;
+    min-height: 30px;
+    border: 30px solid blue;
+    float: left;
+}
+
+.listing-price{
+    float: right;
+}
+.listing-heading {
+    display: inline-block;
+}
