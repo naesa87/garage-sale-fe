@@ -41,7 +41,7 @@ export default class Listings extends Component {
             }
         ];
         return (
-        <div>
+        <div className="container">
             <div className="row">
                 <Listing listing={listings[0]}/>
                 <Listing listing={listings[1]}/>
