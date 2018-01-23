@@ -21,6 +21,7 @@ class Listing extends Component {
                     <h3>Location</h3>
                     <p> {this.props.listing.location} </p>
                 </div>
+                <button className="listing-btn">Buy Now</button>
             </div>
         )
     }

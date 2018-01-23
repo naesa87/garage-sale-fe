@@ -18,7 +18,7 @@
 .listing-price{
     margin: 25px 0 13px 13px;
     float: right;
-    background: green;
+    background: #89B77F;
     color: white;
     padding: 5px 9px 5px;
     font-weight: 700;
@@ -73,6 +73,15 @@
     float: left;
 }
 
+.listing-btn {
+    text-transform: uppercase;
+    border: none;
+    width: 100%;
+    background: #1A73BA;
+    color: white;
+    padding: 15px;
+    font-weight: 700;
+}
 
 @media screen and (max-width: 480px) {
     .listing-price{
