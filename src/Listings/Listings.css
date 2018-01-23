@@ -2,9 +2,8 @@
 
 .listing {
     border: #A9A9A9 solid 1px;
-}
-.list-content {
-    margin: 15px;
+    margin: 30px;
+    padding: 0px;
 }
 
 .listing-image {
@@ -13,6 +12,7 @@
     max-width: 100px;
     max-height: 300px;
     float: left;
+    margin: 15px;
 }
 
 .listing-price{
@@ -20,11 +20,32 @@
 }
 .listing-heading {
     display: inline-block;
+    float: left;
+    margin: 15px 0px 15px 0px;
+    text-align: left;
 }
 
 .listing-heading h2 {
     font-size: 18px;
     font-family: "Open Sans";
     font-weight: 700;
+}
 
+.col-md-5.listing {
+    padding: 0px;
+}
+
+.listing-upper {
+    display: block;
+    width: 100%;
+    float: left;
+    background-color: aquamarine;
+
+}
+
+.list-content {
+    display: block;
+    float: left;
+    width:100%;
+    background-color: blueviolet;
 }
