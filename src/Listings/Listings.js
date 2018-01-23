@@ -42,11 +42,11 @@ export default class Listings extends Component {
         ];
         return (
         <div className="container">
-            <div className="row">
+            <div className="row justify-content-around">
                 <Listing listing={listings[0]}/>
                 <Listing listing={listings[1]}/>
             </div>
-            <div className="row">
+            <div className="row justify-content-around">
                 <Listing listing={listings[2]}/>
                 <Listing listing={listings[3]}/>
             </div>
