@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import logo from './Listings/laptop.jpg';
+import logo from './portraitImage.jpg';
 
 class Listing extends Component {
     render() {
         return (
-            <div className="col-md-6 listing">
+            <div className="col-md-5 listing">
                     <img src={logo} className="listing-image"/>
                     <div className="listing-heading">
                         <h2> {this.props.listing.title} </h2>

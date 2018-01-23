@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Listing from "../Listing"
+import Listing from "./Listing"
 import './Listings.css';
 
 
@@ -8,7 +8,7 @@ export default class Listings extends Component {
     render() {
         const listings = [
             {
-                title: "datasdffsadfasdfaa1",
+                title: "2010 13\" MACBOOK PRO RETINA",
                 serialNumber: "01010110",
                 condition: "fantastic",
                 specs: "pretty good",
