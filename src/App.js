@@ -1,42 +1,26 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, {Component} from 'react';
 import './App.css';
 import Navbar from "./header/Navbar";
-import Listings from "./Listings/Listings"
-const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
+import Listings from "./Listings/Listings";
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import CreateListing from "./create_listing/CreateListing";
+
 
 class App extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { listings : [] }
-  }
-
-  componentDidMount() {
-
-   axios.get(BASE_URL+"/auctions")
-          .then(this.setData.bind(this))
-          .catch(function (error) {
-              console.log(error);
-          })
-  }
-
-  setData(response) {
-      this.setState({
-          listings: response
-      })
-  }
-
-  render() {
-      console.log("baseurl")
-      console.log(process.env.BASE_URL)
-    return (
-      <div className="App">
-        <Navbar/>
-        <Listings listings={this.state.listings}/>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <Navbar/>
+                    <Switch>
+                        <Route exact path='/' component={Listings}/>
+                        <Route exact path='/create-listing' component={CreateListing}/>
+                    </Switch>
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;

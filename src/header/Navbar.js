@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Navbar extends Component {
     render() {
@@ -7,7 +8,7 @@ class Navbar extends Component {
                 <div className="container-fluid">
                     <div className="navbar-nav ml-auto">
                         <li className="nav-item">
-                            <a href="#" className="nav-link">Create Listing</a>
+                            <Link to={'/create-listing'} className="nav-link">Create Listing</Link>
                         </li>
                     </div>
                 </div>
