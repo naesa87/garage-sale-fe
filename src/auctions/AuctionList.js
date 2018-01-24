@@ -28,7 +28,7 @@ export default class AuctionList extends Component {
     }
 
     render() {
-        let content = "";
+        let content = "No Auctions";
         if (this.state.auctionList !== undefined && this.state.auctionList.data !== undefined) {
             content = this.state.auctionList.data.data.map((auction) =>
                 (<Auction auction={auction} key={auction.id}/>)
