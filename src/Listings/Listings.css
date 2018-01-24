@@ -16,6 +16,7 @@
 .listing-price{
     margin: 25px 0 13px 13px;
     float: right;
+    min-width: 50px;
     background: #89B77F;
     color: white;
     padding: 5px 9px 5px;

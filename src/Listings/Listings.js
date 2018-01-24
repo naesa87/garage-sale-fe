@@ -8,12 +8,12 @@ export default class Listings extends Component {
     render() {
         const listings = [
             {
-                title: "2010 13\" MACBOOK PRO RETINA",
+                title: "data1",
                 serialNumber: "01010110",
                 condition: "fantastic",
                 specs: "pretty good",
                 location: "Brisbane",
-                price: "$100"
+                price: "$100.00"
             },
             {
                 title: "data2",
@@ -21,7 +21,7 @@ export default class Listings extends Component {
                 condition: "fantastic2",
                 specs: "pretty good2",
                 location: "Brisbane2",
-                price: "$1002"
+                price: "$10002.00"
             },
             {
                 title: "data3",
@@ -29,7 +29,7 @@ export default class Listings extends Component {
                 condition: "fantastic3",
                 specs: "pretty good3",
                 location: "Brisbane3",
-                price: "$1003"
+                price: "$10003.00"
             },
             {
                 title: "data4",
@@ -37,7 +37,7 @@ export default class Listings extends Component {
                 condition: "fantastic4",
                 specs: "pretty good4",
                 location: "Brisbane4",
-                price: "$1004"
+                price: "$10004.00"
             }
         ];
         return (
