@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-p, h1, h2, h3, h4 {
+p, h1, h2, h3, h4, a, body {
   font-family: 'Open Sans', sans-serif;
 }
 
