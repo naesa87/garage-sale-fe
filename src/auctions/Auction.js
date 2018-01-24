@@ -9,7 +9,7 @@ export default class Auction extends Component {
                     <div className="auction-heading">
                         <img src={logo} className="auction-image"/>
                         <h2> {this.props.auction.title} </h2>
-                        <p> {this.props.auction.serialNumber} </p>
+                        <p> {this.props.auction.serial_number} </p>
                     </div> 
                     <p className="auction-price"> ${this.props.auction.price} <span className="currency">AUD</span> </p>
                 </div>

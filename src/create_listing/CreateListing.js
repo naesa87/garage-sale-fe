@@ -14,7 +14,7 @@ export default class CreateListing extends Component {
             location:"",
             spec:"",
             condition:"",
-            description:"",
+            serial_number:"",
             title:"",
             price:0
         };
@@ -25,8 +25,10 @@ export default class CreateListing extends Component {
         axios.post(BASE_URL + "/auctions", { auction: this.state })
             .then((result) => {
                 console.log(result)
+                alert("SAVED")
             }).catch(function (error) {
             console.log(error);
+            alert("BOOOHOOOO")
         });
     }
 
@@ -37,7 +39,7 @@ export default class CreateListing extends Component {
     }
 
     render() {
-        const { location, spec, condition, description, title, price } = this.state;
+        const { location, spec, condition, serial_number, title, price } = this.state;
 
         return (
             <div className="container">
@@ -45,8 +47,8 @@ export default class CreateListing extends Component {
                     <div className="form-group">
                         <label htmlFor="title">Title</label>
                     <input onChange={this.onChange} value={title} name="title" id="title" class="form-control"/>
-                    <label htmlFor="description">Description</label>
-                    <input onChange={this.onChange} value={description} name="description" id="description" class="form-control"/>
+                    <label htmlFor="serial_number">Serial Number</label>
+                    <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" class="form-control"/>
                     <label htmlFor="price">price</label>
                     <input onChange={this.onChange} value={price} name="price" id="price" class="form-control"/>
                     <label htmlFor="condition">Condition</label>
