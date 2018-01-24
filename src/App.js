@@ -9,7 +9,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { listings : [] }
-
   }
 
   componentDidMount() {
@@ -27,12 +26,10 @@ class App extends Component {
   }
 
   render() {
-      console.log("LISTING");
-      console.log(this.state.listings);
     return (
       <div className="App">
         <Navbar/>
-        <Listings listingss={this.state.listings}/>
+        <Listings listings={this.state.listings}/>
       </div>
     );
   }
