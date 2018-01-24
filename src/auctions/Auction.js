@@ -15,7 +15,7 @@ export default class Auction extends Component {
                 </div>
                 <div className="auction-content">
                 <h4>Specs</h4>
-                    <p> {this.props.auction.specs} </p>
+                    <p> {this.props.auction.spec} </p>
                     <h4>Condition</h4>
                     <p> {this.props.auction.condition} </p>
                     <h4>Location</h4>
