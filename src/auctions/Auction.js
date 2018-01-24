@@ -11,7 +11,7 @@ export default class Auction extends Component {
                         <h2> {this.props.auction.title} </h2>
                         <p> {this.props.auction.serialNumber} </p>
                     </div> 
-                    <p className="auction-price"> {this.props.auction.price} <span className="currency">AUD</span> </p>
+                    <p className="auction-price"> ${this.props.auction.price} <span className="currency">AUD</span> </p>
                 </div>
                 <div className="auction-content">
                 <h4>Specs</h4>

@@ -10,14 +10,23 @@ export default class AuctionList extends Component {
 
     constructor() {
         super()
-        this.state = {auctionList: []}
+        this.state = {
+            isLoading: false,
+            auctionList: []
+        }
     }
 
-    componentDidMount() {
+    componentWillMount() {
+        this.setState({
+            isLoading: true
+        });
         axios.get(BASE_URL + "/auctions")
             .then(this.setData.bind(this))
             .catch(function (error) {
                 console.log(error);
+            })
+            .finally(() => {
+                this.setState({isLoading: false});
             })
     }
 
@@ -28,13 +37,15 @@ export default class AuctionList extends Component {
     }
 
     render() {
+        if(this.state.isLoading){
+            return null
+        }
         let content = "No Auctions";
         if (this.state.auctionList !== undefined && this.state.auctionList.data !== undefined) {
             content = this.state.auctionList.data.data.map((auction) =>
                 (<Auction auction={auction} key={auction.id}/>)
             );
         }
-
         return (
             <div className="container">
                 <div className="row justify-content-around">
