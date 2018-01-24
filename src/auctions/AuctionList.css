@@ -1,10 +1,10 @@
-.listing {
+.auction {
     border: #A9A9A9 solid 1px;
     margin: 25px 0;
     padding: 0px;
 }
 
-.listing-image {
+.auction-image {
     min-width: 20px;
     min-height: 30px;
     max-width: 100px;
@@ -13,7 +13,7 @@
     margin: 0 15px 15px 15px;
 }
 
-.listing-price{
+.auction-price{
     margin: 25px 0 13px 13px;
     float: right;
     min-width: 50px;
@@ -23,7 +23,7 @@
     font-weight: 700;
 }
 
-.listing-heading {
+.auction-heading {
     display: inline-block;
     float: left;
     margin: 15px 0px 15px 0px;
@@ -31,52 +31,52 @@
     width: 300px;
 }
 
-.listing h2, .listing h4 {
+.auction h2, .auction h4 {
     font-family: "Open Sans";
 }
 
-.listing-heading h2 {
+.auction-heading h2 {
     margin-top: 18px;
     font-size: 18px;
     text-transform: uppercase;
 }
 
-.listing-heading p {
+.auction-heading p {
     font-size: 14px;
 }
 
-.list-content {
+.auction-content {
     text-align: left; 
     padding: 15px;
 }
 
-.list-content h4 {
+.auction-content h4 {
     text-transform: uppercase;
     font-size: 16px;
     margin-bottom: 0;
 }
 
-.list-content p {
+.auction-content p {
     font-weight: 300;
     font-size: 14px;
     color: dimgray;
 }
 
-.col-md-5.listing {
+.col-md-5.auction {
     padding: 0px;
 }
 
-.listing-price .currency {
+.auction-price .currency {
     font-size: 0.7rem;
 }
 
-.listing-upper , .list-content {
+.auction-upper , .auction-content {
     display: block;
     width: 100%;
     float: left;
 }
 
-.listing-btn {
+.auction-btn {
     text-transform: uppercase;
     border: none;
     width: 100%;
@@ -87,7 +87,7 @@
 }
 
 @media screen and (max-width: 480px) {
-    .listing-price{
+    .auction-price{
         margin: 15px 0 13px 0px;
         float: left;
     }
