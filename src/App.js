@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Navbar from "./header/Navbar";
 import Listings from "./Listings/Listings"
+const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
 class App extends Component {
 
@@ -12,7 +13,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-   axios.get('http://localhost:4000/api/auctions')
+
+   axios.get(BASE_URL+"/auctions")
           .then(this.setData.bind(this))
           .catch(function (error) {
               console.log(error);
@@ -26,6 +28,8 @@ class App extends Component {
   }
 
   render() {
+      console.log("baseurl")
+      console.log(process.env.BASE_URL)
     return (
       <div className="App">
         <Navbar/>
