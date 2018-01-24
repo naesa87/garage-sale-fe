@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Listing from "./Listing"
-import './Listings.css';
+import Auction from "./Auction"
+import './AuctionList.css';
 import axios from "axios/index";
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
 
-export default class Listings extends Component {
+export default class AuctionList extends Component {
 
     constructor() {
         super()
@@ -31,7 +31,7 @@ export default class Listings extends Component {
         let content = "";
         if (this.state.listings !== undefined && this.state.listings.data !== undefined) {
             content = this.state.listings.data.data.map((listing) =>
-                (<Listing listing={listing} key={listing.id} />)
+                (<Auction listing={listing} key={listing.id} />)
             );
         }
 

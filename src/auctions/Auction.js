@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import logo from './portraitImage.jpg';
 
-class Listing extends Component {
+export default class Auction extends Component {
     render() {
         return (
             <div className="col-md-5 listing">
@@ -26,5 +26,3 @@ class Listing extends Component {
         )
     }
 }
-
-export default Listing;
