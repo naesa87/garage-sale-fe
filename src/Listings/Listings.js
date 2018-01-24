@@ -40,6 +40,8 @@ export default class Listings extends Component {
                 price: "$10004.00"
             }
         ];
+        console.log("listingss")
+        console.log(this.props.listingss)
         return (
         <div className="container">
             <div className="row justify-content-around">
