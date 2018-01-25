@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
+import './CreateListing.css';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
@@ -49,8 +50,12 @@ export default class CreateListing extends Component {
                     <input onChange={this.onChange} value={title} name="title" id="title" class="form-control"/>
                     <label htmlFor="serial_number">Serial Number</label>
                     <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" class="form-control"/>
-                    <label htmlFor="price">price</label>
-                    <input onChange={this.onChange} value={price} name="price" id="price" class="form-control"/>
+                    <div class="control-group">
+                        <label htmlFor="price">price</label>
+                        <div class="controls">
+                            <input onChange={this.onChange} type="number" value={price} name="price" id="price" class="form-control"/>
+                        </div>                    
+                    </div>
                     <label htmlFor="condition">Condition</label>
                     <input onChange={this.onChange} value={condition} name="condition" id="condition" class="form-control"/>
                     <label htmlFor="spec">Spec</label>
