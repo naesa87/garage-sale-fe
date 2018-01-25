@@ -44,9 +44,13 @@ export default class CreateListing extends Component {
 
         return (
             <div className="container">
+            <h3 className="create-listing-heading col-md-8"> Create Listing</h3>
+            <p className="create-listing-hint col-md-8"> Hint: Reference "About this Mac" on the machine you want to sell for assistance
+            with the following details. All fields are required.
+            </p>
                 <form onSubmit={this.onSubmit.bind(this)} id="form1">
             
-                    <div className="form-group">
+                    <div className="form-group col-md-8">
 
                         <div class="control-group">
                             <label htmlFor="title">Title</label>
@@ -63,7 +67,7 @@ export default class CreateListing extends Component {
                         </div>
 
                         <div class="control-group">
-                            <label htmlFor="price">price</label>
+                            <label htmlFor="price">Price</label>
                             <div class="controls">
                                 <input onChange={this.onChange} required type="number" min="0" value={price} name="price" id="price" class="form-control"/>
                             </div>                    
@@ -71,11 +75,10 @@ export default class CreateListing extends Component {
                         
                         <div class="control-group">  
                         <div> 
-                            <label htmlFor="condition">Condition</label> 
-                                <span id="character-remaining" class="textarea_count"> (200 characters max) </span>
+                            <label htmlFor="condition">Condition (200 characters max)</label> 
                         </div>
                             <div class="controls textarea_wrapper">
-                                <textarea  id="condition-text-area" onChange={this.onChange} rows="3" required type="text" minlength="1" maxlength="200" value={condition} name="condition" id="condition" class="form-control"/>
+                                <textarea  id="condition-text-area" onChange={this.onChange} rows="3" required type="text" maxlength="200" value={condition} name="condition" id="condition" class="form-control"/>
                             </div>
                         </div>
 
