@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
 import './CreateListing.css';
+import FileBase64 from 'react-file-base64';
+import _ from 'lodash';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
@@ -17,8 +19,14 @@ export default class CreateListing extends Component {
             condition:"",
             serial_number:"",
             title:"",
-            price:0
+            price:0,
+            files: [ ]
         };
+    }
+
+    getFiles(files){
+        this.setState({ files: files });
+        console.log(this.state.files);
     }
 
     onSubmit = (e) => {
@@ -39,6 +47,15 @@ export default class CreateListing extends Component {
         this.setState(state);
     }
 
+    renderSelectedImgList = () => {
+        const imageListHtml = _.map(this.state.files, (file) => {
+            return (
+                <div className="row"> {file.name} </div>
+            )
+        });
+        return imageListHtml;
+    }
+
     render() {
         const { location, spec, condition, serial_number, title, price } = this.state;
 
@@ -51,7 +68,6 @@ export default class CreateListing extends Component {
                 <form onSubmit={this.onSubmit.bind(this)} id="form1">
             
                     <div className="form-group col-md-8">
-
                         <div class="control-group">
                             <label htmlFor="title">Title</label>
                             <div class="controls">
@@ -95,6 +111,13 @@ export default class CreateListing extends Component {
                                 <input onChange={this.onChange} value={location} name="location" id="location" class="form-control"/>
                             </div>
                         </div>
+
+                        <div class="control-group">
+                            <FileBase64 multiple={ true } onDone={ this.getFiles.bind(this) } />
+                            {this.renderSelectedImgList()}
+                        </div>
+
+
                         <button type="submit" className="mb-4 btn btn-primary">Post Listing</button>
                     </div>
                 </form>
