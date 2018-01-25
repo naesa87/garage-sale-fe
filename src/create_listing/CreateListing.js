@@ -20,7 +20,8 @@ export default class CreateListing extends Component {
             serial_number:"",
             title:"",
             price:0,
-            files: [ ]
+            files: [],
+            errors: []
         };
     }
 
@@ -31,6 +32,14 @@ export default class CreateListing extends Component {
 
     onSubmit = (e) => {
         e.preventDefault();
+        var errors = this.validate();
+        console.log(this.refs.title);
+        if(Object.keys(errors).length != 0) {
+            this.setState({
+                errors: errors
+            });
+            return;
+        }
         axios.post(BASE_URL + "/auctions", { auction: this.state })
             .then((result) => {
                 console.log(result)
@@ -39,6 +48,31 @@ export default class CreateListing extends Component {
             console.log(error);
             alert("BOOOHOOOO")
         });
+    }
+
+    validate = () => {
+    var errors = {} 
+    if (this.state.title == "" || this.state.title.trim() == "") {
+        errors.title = "Title is required";
+
+
+    }
+    if (this.state.serial_number == "" || this.state.serial_number.trim() == "") {
+        errors.serial_number = "Serial Number is required";
+    }
+    if (this.state.price == 0 || this.state.price < 0) {
+        errors.price = "Price must be greater than 0";
+    }
+    if (this.state.condition == "" || this.state.condition.trim() == "") {
+        errors.condition = "Condition is required";
+    }
+    if (this.state.spec == "" || this.state.spec.trim() == "") {
+        errors.spec = "Spec is required";
+    }
+    if (this.state.location == "" || this.state.location.trim() == "") {
+        errors.location = "Location is required";
+    }
+    return errors;
     }
 
     onChange = (e) => {
@@ -57,7 +91,7 @@ export default class CreateListing extends Component {
     }
 
     render() {
-        const { location, spec, condition, serial_number, title, price } = this.state;
+        const { location, spec, condition, serial_number, title, price, errors } = this.state;
 
         return (
             <div className="container">
@@ -68,47 +102,48 @@ export default class CreateListing extends Component {
                 <form onSubmit={this.onSubmit.bind(this)} id="form1">
             
                     <div className="form-group col-md-8">
-                        <div class="control-group">
+
+                        <div className="control-group ">
                             <label htmlFor="title">Title</label>
-                            <div class="controls">
-                                <input onChange={this.onChange} value={title} required name="title" id="title" class="form-control"/>
+                            <div className="controls has-error">
+                                <input onChange={this.onChange} value={title} required name="title" id="title" className='form-control'/>
                             </div>
                         </div>
 
-                        <div class="control-group">                    
+                        <div className="control-group">                    
                             <label htmlFor="serial_number">Serial Number</label>
-                            <div class="controls">                        
-                                <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" class="form-control"/>
+                            <div className="controls">                        
+                                <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" className="form-control"/>
                             </div>
                         </div>
 
-                        <div class="control-group">
+                        <div className="control-group">
                             <label htmlFor="price">Price</label>
-                            <div class="controls">
-                                <input onChange={this.onChange} required type="number" min="0" value={price} name="price" id="price" class="form-control"/>
+                            <div className="controls">
+                                <input onChange={this.onChange} required type="number" min="0" value={price} name="price" id="price" className="form-control"/>
                             </div>                    
                         </div>
                         
-                        <div class="control-group">  
+                        <div className="control-group">  
                         <div> 
                             <label htmlFor="condition">Condition (200 characters max)</label> 
                         </div>
-                            <div class="controls textarea_wrapper">
-                                <textarea  id="condition-text-area" onChange={this.onChange} rows="3" required type="text" maxlength="200" value={condition} name="condition" id="condition" class="form-control"/>
+                            <div className="controls textarea_wrapper">
+                                <textarea  id="condition-text-area" onChange={this.onChange} rows="3" required type="text" maxLength="200" value={condition} name="condition" id="condition" className="form-control"/>
                             </div>
                         </div>
 
-                        <div class="control-group">                    
+                        <div className="control-group">                    
                             <label htmlFor="spec">Spec</label>
-                            <div class="controls">
-                                <input onChange={this.onChange} value={spec} name="spec" id="spec" class="form-control"/>
+                            <div className="controls">
+                                <input onChange={this.onChange} value={spec} name="spec" id="spec" className="form-control"/>
                             </div>
                         </div>
 
-                        <div class="control-group">
+                        <div className="control-group">
                             <label htmlFor="location">Location</label>
-                            <div class="controls">                        
-                                <input onChange={this.onChange} value={location} name="location" id="location" class="form-control"/>
+                            <div className="controls">                        
+                                <input onChange={this.onChange} value={location} name="location" id="location" className="form-control"/>
                             </div>
                         </div>
 
