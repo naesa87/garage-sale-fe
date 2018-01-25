@@ -45,24 +45,54 @@ export default class CreateListing extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.onSubmit.bind(this)} id="form1">
+            
                     <div className="form-group">
-                        <label htmlFor="title">Title</label>
-                    <input onChange={this.onChange} value={title} name="title" id="title" class="form-control"/>
-                    <label htmlFor="serial_number">Serial Number</label>
-                    <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" class="form-control"/>
-                    <div class="control-group">
-                        <label htmlFor="price">price</label>
-                        <div class="controls">
-                            <input onChange={this.onChange} type="number" value={price} name="price" id="price" class="form-control"/>
-                        </div>                    
-                    </div>
-                    <label htmlFor="condition">Condition</label>
-                    <input onChange={this.onChange} value={condition} name="condition" id="condition" class="form-control"/>
-                    <label htmlFor="spec">Spec</label>
-                    <input onChange={this.onChange} value={spec} name="spec" id="spec" class="form-control"/>
-                    <label htmlFor="location">Location</label>
-                    <input onChange={this.onChange} value={location} name="location" id="location" class="form-control"/>
-                    <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+
+                        <div class="control-group">
+                            <label htmlFor="title">Title</label>
+                            <div class="controls">
+                                <input onChange={this.onChange} value={title} required name="title" id="title" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">                    
+                            <label htmlFor="serial_number">Serial Number</label>
+                            <div class="controls">                        
+                                <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label htmlFor="price">price</label>
+                            <div class="controls">
+                                <input onChange={this.onChange} required type="number" min="0" value={price} name="price" id="price" class="form-control"/>
+                            </div>                    
+                        </div>
+                        
+                        <div class="control-group">  
+                        <div> 
+                            <label htmlFor="condition">Condition</label> 
+                                <span id="character-remaining" class="textarea_count"> (200 characters max) </span>
+                        </div>
+                            <div class="controls textarea_wrapper">
+                                <textarea  id="condition-text-area" onChange={this.onChange} rows="3" required type="text" minlength="1" maxlength="200" value={condition} name="condition" id="condition" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">                    
+                            <label htmlFor="spec">Spec</label>
+                            <div class="controls">
+                                <input onChange={this.onChange} value={spec} name="spec" id="spec" class="form-control"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label htmlFor="location">Location</label>
+                            <div class="controls">                        
+                                <input onChange={this.onChange} value={location} name="location" id="location" class="form-control"/>
+                            </div>
+                        </div>
+                        <button type="submit" className="mb-4 btn btn-primary">Post Listing</button>
                     </div>
                 </form>
             </div>
