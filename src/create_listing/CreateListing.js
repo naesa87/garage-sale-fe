@@ -34,7 +34,7 @@ export default class CreateListing extends Component {
         e.preventDefault();
         var errors = this.validate();
         console.log(this.refs.title);
-        if(Object.keys(errors).length != 0) {
+        if(Object.keys(errors).length !== 0) {
             this.setState({
                 errors: errors
             });
@@ -52,24 +52,22 @@ export default class CreateListing extends Component {
 
     validate = () => {
     var errors = {} 
-    if (this.state.title == "" || this.state.title.trim() == "") {
+    if (this.state.title === "" || this.state.title.trim() === "") {
         errors.title = "Title is required";
-
-
     }
-    if (this.state.serial_number == "" || this.state.serial_number.trim() == "") {
+    if (this.state.serial_number === "" || this.state.serial_number.trim() === "") {
         errors.serial_number = "Serial Number is required";
     }
-    if (this.state.price == 0 || this.state.price < 0) {
+    if (this.state.price === 0 || this.state.price < 0) {
         errors.price = "Price must be greater than 0";
     }
-    if (this.state.condition == "" || this.state.condition.trim() == "") {
+    if (this.state.condition === "" || this.state.condition.trim() === "") {
         errors.condition = "Condition is required";
     }
-    if (this.state.spec == "" || this.state.spec.trim() == "") {
+    if (this.state.spec === "" || this.state.spec.trim() === "") {
         errors.spec = "Spec is required";
     }
-    if (this.state.location == "" || this.state.location.trim() == "") {
+    if (this.state.location === "" || this.state.location.trim() === "") {
         errors.location = "Location is required";
     }
     return errors;
@@ -92,35 +90,35 @@ export default class CreateListing extends Component {
 
     render() {
         const { location, spec, condition, serial_number, title, price, errors } = this.state;
-
+        debugger
         return (
             <div className="container">
             <h3 className="create-listing-heading col-md-8"> Create Listing</h3>
             <p className="create-listing-hint col-md-8"> Hint: Reference "About this Mac" on the machine you want to sell for assistance
             with the following details. All fields are required.
             </p>
-                <form onSubmit={this.onSubmit.bind(this)} id="form1">
+                <form onSubmit={this.onSubmit.bind(this)} id="form1" noValidate>
             
                     <div className="form-group col-md-8">
 
                         <div className="control-group ">
                             <label htmlFor="title">Title</label>
-                            <div className="controls has-error">
-                                <input onChange={this.onChange} value={title} required name="title" id="title" className='form-control'/>
+                            <div className="controls ">
+                                <input onChange={this.onChange} value={title} name="title" id="title" className={`form-control ${errors.title ? "is-invalid" : ""}`}/>
                             </div>
                         </div>
 
                         <div className="control-group">                    
                             <label htmlFor="serial_number">Serial Number</label>
                             <div className="controls">                        
-                                <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" className="form-control"/>
+                                <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" className={`form-control ${errors.serial_number ? "is-invalid" : ""}`}/>
                             </div>
                         </div>
 
                         <div className="control-group">
                             <label htmlFor="price">Price</label>
                             <div className="controls">
-                                <input onChange={this.onChange} required type="number" min="0" value={price} name="price" id="price" className="form-control"/>
+                                <input onChange={this.onChange} type="number" min="0" value={price} name="price" id="price" className={`form-control ${errors.price ? "is-invalid" : ""}`}/>
                             </div>                    
                         </div>
                         
@@ -129,25 +127,25 @@ export default class CreateListing extends Component {
                             <label htmlFor="condition">Condition (200 characters max)</label> 
                         </div>
                             <div className="controls textarea_wrapper">
-                                <textarea  id="condition-text-area" onChange={this.onChange} rows="3" required type="text" maxLength="200" value={condition} name="condition" id="condition" className="form-control"/>
+                                <textarea  id="condition-text-area" onChange={this.onChange} rows="3" type="text" maxLength="200" value={condition} name="condition" id="condition" className={`form-control ${errors.condition ? "is-invalid" : ""}`}/>
                             </div>
                         </div>
 
                         <div className="control-group">                    
                             <label htmlFor="spec">Spec</label>
                             <div className="controls">
-                                <input onChange={this.onChange} value={spec} name="spec" id="spec" className="form-control"/>
+                                <input onChange={this.onChange} value={spec} name="spec" id="spec" className={`form-control ${errors.spec ? "is-invalid" : ""}`}/>
                             </div>
                         </div>
 
                         <div className="control-group">
                             <label htmlFor="location">Location</label>
                             <div className="controls">                        
-                                <input onChange={this.onChange} value={location} name="location" id="location" className="form-control"/>
+                                <input onChange={this.onChange} value={location} name="location" id="location" className={`form-control ${errors.location ? "is-invalid" : ""}`}/>
                             </div>
                         </div>
 
-                        <div class="control-group">
+                        <div className="control-group">
                             <FileBase64 multiple={ true } onDone={ this.getFiles.bind(this) } />
                             {this.renderSelectedImgList()}
                         </div>
