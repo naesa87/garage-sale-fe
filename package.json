@@ -9,6 +9,7 @@
     "axios": "^0.17.1",
     "bootstrap": "4.0.0",
     "lodash": "^4.17.4",
+    "node-sass-chokidar": "^0.0.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-file-base64": "^1.0.3",
@@ -17,8 +18,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6"
   }
 }
