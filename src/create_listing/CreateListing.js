@@ -3,6 +3,7 @@ import axios from "axios/index";
 import './CreateListing.css';
 import FileBase64 from 'react-file-base64';
 import _ from 'lodash';
+import FormControlGroup from './FormControlGroup';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
@@ -90,7 +91,6 @@ export default class CreateListing extends Component {
 
     render() {
         const { location, spec, condition, serial_number, title, price, errors } = this.state;
-        debugger
         return (
             <div className="container">
             <h3 className="create-listing-heading col-md-8"> Create Listing</h3>
@@ -101,27 +101,11 @@ export default class CreateListing extends Component {
             
                     <div className="form-group col-md-8">
 
-                        <div className="control-group ">
-                            <label htmlFor="title">Title</label>
-                            <div className="controls ">
-                                <input onChange={this.onChange} value={title} name="title" id="title" className={`form-control ${errors.title ? "is-invalid" : ""}`}/>
-                            </div>
-                        </div>
-
-                        <div className="control-group">                    
-                            <label htmlFor="serial_number">Serial Number</label>
-                            <div className="controls">                        
-                                <input onChange={this.onChange} value={serial_number} name="serial_number" id="serial_number" className={`form-control ${errors.serial_number ? "is-invalid" : ""}`}/>
-                            </div>
-                        </div>
-
-                        <div className="control-group">
-                            <label htmlFor="price">Price</label>
-                            <div className="controls">
-                                <input onChange={this.onChange} type="number" min="0" value={price} name="price" id="price" className={`form-control ${errors.price ? "is-invalid" : ""}`}/>
-                            </div>                    
-                        </div>
-                        
+                        <FormControlGroup label="Title" value={title} errors={errors} change={this.onChange} name="title"/>
+                        <FormControlGroup label="Serial Number" value={serial_number} errors={errors} change={this.onChange} name="serial_number"/>
+                        <FormControlGroup label="Price" value={price} errors={errors} change={this.onChange} name="price"/>
+                        <FormControlGroup label="Specifications" value={spec} errors={errors} change={this.onChange} name="spec"/>
+                      
                         <div className="control-group">  
                         <div> 
                             <label htmlFor="condition">Condition (200 characters max)</label> 
@@ -130,21 +114,9 @@ export default class CreateListing extends Component {
                                 <textarea  id="condition-text-area" onChange={this.onChange} rows="3" type="text" maxLength="200" value={condition} name="condition" id="condition" className={`form-control ${errors.condition ? "is-invalid" : ""}`}/>
                             </div>
                         </div>
-
-                        <div className="control-group">                    
-                            <label htmlFor="spec">Spec</label>
-                            <div className="controls">
-                                <input onChange={this.onChange} value={spec} name="spec" id="spec" className={`form-control ${errors.spec ? "is-invalid" : ""}`}/>
-                            </div>
-                        </div>
-
-                        <div className="control-group">
-                            <label htmlFor="location">Location</label>
-                            <div className="controls">                        
-                                <input onChange={this.onChange} value={location} name="location" id="location" className={`form-control ${errors.location ? "is-invalid" : ""}`}/>
-                            </div>
-                        </div>
-
+                      
+                        <FormControlGroup label="Location" value={location} errors={errors} change={this.onChange} name="location"/>
+                        
                         <div className="control-group">
                             <FileBase64 multiple={ true } onDone={ this.getFiles.bind(this) } />
                             {this.renderSelectedImgList()}
