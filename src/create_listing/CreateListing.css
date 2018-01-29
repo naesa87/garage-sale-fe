@@ -41,7 +41,18 @@ label {
     text-transform: uppercase;
 }
 
+.file-upload {
+    margin-top:20px;
+    float:left;
+}
 
+.filenames{ 
+    text-align: left;
+}
+
+.post-button, .filenames {
+    clear: left;
+}
 
 @media screen and (max-width: 480px) {
 

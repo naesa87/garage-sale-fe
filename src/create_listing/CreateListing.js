@@ -81,12 +81,17 @@ export default class CreateListing extends Component {
     }
 
     renderSelectedImgList = () => {
-        const imageListHtml = _.map(this.state.files, (file) => {
-            return (
-                <div className="row"> {file.name} </div>
-            )
-        });
-        return imageListHtml;
+        if(this.state.files.length > 1){
+            const imageListHtml = _.map(this.state.files, (file) => {
+                return (
+                    <div> {file.name} </div>
+                )
+            });
+            return (<div className="filenames">
+                {imageListHtml}
+                </div>
+            );
+        }
     }
 
     render() {
@@ -118,12 +123,15 @@ export default class CreateListing extends Component {
                         <FormControlGroup label="Location" value={location} errors={errors} change={this.onChange} name="location"/>
                         
                         <div className="control-group">
-                            <FileBase64 multiple={ true } onDone={ this.getFiles.bind(this) } />
+                            <div className="file-upload">
+                                 <FileBase64 multiple={ true } onDone={ this.getFiles.bind(this) } data-buttonText="Your label here." className="file-upload" />
+                            </div>
                             {this.renderSelectedImgList()}
                         </div>
 
-
+<div className="post-button">
                         <button type="submit" className="mb-4 btn btn-primary">Post Listing</button>
+</div>
                     </div>
                 </form>
             </div>
