@@ -5,7 +5,7 @@ const FormControlGroup = (props) => {
         <div className="control-group">
         <label htmlFor={props.name}>{props.label}</label>
         <div className="controls">
-            <input onChange={props.change} value={props.value} name={props.name} id={props.name} className={`form-control ${props.errors[props.name] ? "is-invalid" : ""}`}/>
+            <input type={props.isNumeric ? "number" : "text"} onChange={props.change} value={props.value} name={props.name} id={props.name} className={`form-control ${props.errors[props.name] ? "is-invalid" : ""}`}/>
         </div>  
     </div> 
     )

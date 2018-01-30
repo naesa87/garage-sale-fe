@@ -22,12 +22,14 @@ export default class AuctionList extends Component {
         });
         axios.get(BASE_URL + "/auctions")
             .then(this.setData.bind(this))
-            .catch(function (error) {
-                console.log(error);
-            })
-            .finally(() => {
+            .then(() => {
                 this.setState({isLoading: false});
             })
+            .catch(function (error) {
+                console.log(BASE_URL);
+                console.log(error);
+            })
+            
     }
 
     setData(response) {

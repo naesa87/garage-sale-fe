@@ -1,13 +1,20 @@
 import React, {Component} from 'react';
-import logo from './portraitImage.jpg';
+import defaultLogo from './portraitImage.jpg';
 
 export default class Auction extends Component {
+
+    renderImg(images) {
+        return (images.length > 0)
+            ? images[0].rawImageData
+            : defaultLogo ;
+    }
+
     render() {
         return (
             <div className="col-md-5 auction">
                 <div className="auction-upper">
                     <div className="auction-heading">
-                        <img src={logo} className="auction-image"/>
+                        <img src={this.renderImg(this.props.auction.images.data)} className="auction-image"/>
                         <h2> {this.props.auction.title} </h2>
                         <p> {this.props.auction.serial_number} </p>
                     </div> 

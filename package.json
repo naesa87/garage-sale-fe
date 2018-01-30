@@ -9,15 +9,28 @@
     "babel-core": "^6.26.0",
     "bootstrap": "4.0.0",
     "lodash": "^4.17.4",
+    "node-sass-chokidar": "^0.0.3",
+    "npm-run-all": "^4.1.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-file-base64": "^1.0.3",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "watch-css": "yarn run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
+    "test-js": "react-scripts test --env=jsdom",
+    "test": "jest",
+    "eject": "react-scripts eject",
+    "start-js": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "build-js": "react-scripts build",
+    "build": "npm-run-all build-css build-js"
   },
   "devDependencies": {
     "axios": "^0.17.1",
@@ -57,5 +70,9 @@
   "moduleDirectories": [
     "node_modules",
     "src"
-  ]
+  ],
+  "devDependencies": {
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.6"
+  }
 }
