@@ -1,0 +1,107 @@
+.col-md-5.auction {
+    padding: 0px;
+}
+
+.auction {
+    border: #A9A9A9 solid 1px;
+    margin: 25px 0;
+    padding: 0px;
+    position: relative;
+
+    h2, h4 {
+        font-family: "Open Sans";
+    }
+
+    .auction-upper , .auction-content {
+        display: block;
+        width: 100%;
+        float: left;
+    }
+
+    .auction-upper {
+
+        .auction-image {
+            min-width: 20px;
+            min-height: 30px;
+            max-width: 100px;
+            max-height: 300px;
+            float: left;
+            margin: 0 15px 15px 15px;
+        }
+
+        .auction-heading {
+            display: block;
+            float: left;
+            margin: 15px 0px 15px 0px;
+            text-align: left;
+            width: 300px;
+
+            h2 {
+                margin-top: 18px;
+                font-size: 18px;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            p {
+                font-size: 14px;
+                word-wrap: break-word;
+            }
+            
+        }
+
+        .auction-price{
+            margin: 25px 0 13px 13px;
+            float: right;
+            min-width: 50px;
+            background: #89B77F;
+            color: white;
+            padding: 5px 9px 5px;
+            font-weight: 700;
+
+            .currency {
+                font-size: 0.7rem;
+            }
+        }
+    }
+
+    .auction-content {
+        text-align: left; 
+        padding: 15px;
+        margin-bottom: 40px;
+
+        h4 {
+            text-transform: uppercase;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 14px;
+            color: dimgray;
+            word-wrap: break-word;
+        }
+    }
+
+    .auction-btn {
+        text-transform: uppercase;
+        border: none;
+        width: 100%;
+        background: #1A73BA;
+        color: white;
+        padding: 15px;
+        font-weight: 700;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    .auction-price{
+        margin: 15px 0 13px 0px;
+        float: left;
+    }
+}
