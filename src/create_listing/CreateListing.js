@@ -22,7 +22,9 @@ export default class CreateListing extends Component {
             title: "",
             price: 0,
             files: [],
-            errors: []
+            errors: [],
+            submitted: false,
+            submissionFailed: false
         };
     }
 
@@ -44,10 +46,15 @@ export default class CreateListing extends Component {
         axios.post(BASE_URL + "/auctions", { auction: this.state })
             .then((result) => {
                 console.log(result)
-                alert("SAVED")
-            }).catch(function (error) {
-                console.log(error);
-                alert("BOOOHOOOO")
+                this.setState({
+                    errors: [],
+                    submitted: true
+                });
+            }).catch((error) => {
+                console.log(error)
+                this.setState({
+                    submissionFailed:true
+                });
             });
     }
 
@@ -94,6 +101,24 @@ export default class CreateListing extends Component {
         }
     }
 
+    renderNotification = () => {
+        if (this.state.submitted === true) { 
+            return (
+                <div className="alert alert-success" role="alert"> Submitted! </div>
+            )
+        }
+        else if (this.state.submissionFailed) {
+            return (
+                <div className="alert alert-danger" role="alert"> Network Error. Please try again </div>
+            )
+        }
+        else if (Object.keys(this.state.errors).length !== 0) {
+            return (
+            <div className="alert alert-danger" role="alert"> Please fix errors below </div>
+            )
+        }
+    }
+
     render() {
         const { location, spec, condition, serial_number, title, price, errors } = this.state;
         return (
@@ -106,11 +131,11 @@ export default class CreateListing extends Component {
                 </div>
                 <div className="row justify-content-md-center">
                     <form onSubmit={this.onSubmit.bind(this)} id="form1" noValidate className="col-md-8">
-
+                        {this.renderNotification()}
                         <div className="form-group">
                             <FormControlGroup label="Title" value={title} errors={errors} change={this.onChange} name="title" />
                             <FormControlGroup label="Serial Number" value={serial_number} errors={errors} change={this.onChange} name="serial_number" />
-                            <FormControlGroup label="Price" value={price} errors={errors} change={this.onChange} name="price" />
+                            <FormControlGroup label="Price" value={price} errors={errors} change={this.onChange} name="price" isNumeric="true"/>
                             <FormControlGroup label="Specifications" value={spec} errors={errors} change={this.onChange} name="spec" />
                             <div className="control-group">
                                 <div>
@@ -128,7 +153,7 @@ export default class CreateListing extends Component {
                                 {this.renderSelectedImgList()}
                             </div>
                             <div className="post-button">
-                                <button type="submit" className="mb-4 btn btn-primary">Post Listing</button>
+                                <button type="submit" className="mb-4 btn btn-primary" disabled={this.state.submitted}> {this.state.submitted ? "Submitted" : "Post Listing"} </button>
                             </div>
                         </div>
                     </form>

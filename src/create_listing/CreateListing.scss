@@ -38,6 +38,7 @@ label {
 
 .filenames{ 
     text-align: left;
+    clear: left;
 }
 
 .file-upload {
@@ -52,7 +53,5 @@ label {
 }
 
 .post-button {
-    .filenames {
-        clear: left;
-    }
+    clear: left;
 }
