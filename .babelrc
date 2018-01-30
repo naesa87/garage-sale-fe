@@ -1,0 +1,27 @@
+{
+  "presets": [
+    "es2015","react"],
+  "env": {
+    "coverage": {
+      "plugins": [
+        "rewire",
+        ["istanbul", {
+          "exclude": [
+            "src/test"
+          ]
+        }],
+        ["root-import", [{
+          "rootPathSuffix": "src/main"
+        }, {
+          "rootPathPrefix": "@",
+          "rootPathSuffix": "src/test"
+        }]]
+      ]
+    },
+    "test": {
+      "plugins": [
+        "transform-es2015-modules-commonjs","es6-promise"
+      ]
+    }
+  }
+}
