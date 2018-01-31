@@ -1,32 +1,28 @@
-import React from 'react';
-import {shallow} from 'enzyme';
-import Enzyme from 'enzyme';
-import {render} from 'react-dom';
-import Auction from '../src/auctions/Auction.js'
+import React from 'react'
+import { configure, render } from 'enzyme';
+import Auction from '../src/auctions/Auction'
 import Adapter from 'enzyme-adapter-react-16';
-import { mount } from 'enzyme';
+import {expect} from 'chai';
 
-Enzyme.configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
-jest.mock('react-dom');
-describe('<Auction />', () => {
-
+describe('Auction', () => {
     const auction = {
-                images: {
-                    data: "empty.jpg"
-                },
-                price: '100',
-                title: "TestTitle",
+        images: {
+            data: "empty.jpg"
+        },
+        price: '100',
+        title: "TestTitle",
         serial_number: "1234",
-                spec:  "TestSpec",
-            location:  "TestLocation",
-            condition: "Condition",
-            id: 1
+        spec:  "TestSpec",
+        location:  "TestLocation",
+        condition: "Condition",
+        id: 1
     };
 
-
-    it('allows us to set all props', () => {
-        const auctionWrapper = mount(<Auction auction={auction} key={auction.id}/>);
-        expect(auctionWrapper.props().price).to.equal('100');
+    it('renders the auction', () => {
+        const component = render(<Auction auction={auction} key={auction.id}/>);
+        console.log(component.text())
+        expect(component.text()).to.contain("TestTitle")
     });
 });
