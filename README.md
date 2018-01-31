@@ -4,3 +4,15 @@
 ## Tech Stack
 
   * React Front End
+
+## Steps for merge from original repo to TW repo
+
+  1. open `.git/config` file
+  2. replace origin with new origin
+```
+[remote "origin"]
+      url = https://github.com/twlabs/garage-sale-fe.git
+      fetch = +refs/heads/*:refs/remotes/origin/*
+```
+  3. run `git pull --allow-unrelated-histories`
+  4. now you should be able to push
