@@ -20,7 +20,7 @@
     },
     "test": {
       "plugins": [
-        "transform-es2015-modules-commonjs","es6-promise"
+        "transform-es2015-modules-commonjs","es6-promise","transform-class-properties"
       ]
     }
   }
