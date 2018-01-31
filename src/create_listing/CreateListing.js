@@ -142,7 +142,7 @@ export default class CreateListing extends Component {
                                     <label htmlFor="condition">Condition (200 characters max)</label>
                                 </div>
                                 <div className="controls textarea_wrapper">
-                                    <textarea id="condition-text-area" onChange={this.onChange} rows="3" type="text" maxLength="200" value={condition} name="condition" id="condition" className={`form-control ${errors.condition ? "is-invalid" : ""}`} />
+                                    <textarea onChange={this.onChange} rows="3" type="text" maxLength="200" value={condition} name="condition" id="condition" className={`form-control ${errors.condition ? "is-invalid" : ""}`} />
                                 </div>
                             </div>
                             <FormControlGroup label="Location" value={location} errors={errors} change={this.onChange} name="location" />

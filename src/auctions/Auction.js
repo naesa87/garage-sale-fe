@@ -14,7 +14,7 @@ export default class Auction extends Component {
             <div className="col-md-5 auction">
                 <div className="auction-upper">
                     <div className="auction-heading">
-                        <img src={this.renderImg(this.props.auction.images.data)} className="auction-image"/>
+                        <img src={this.renderImg(this.props.auction.images.data)} className="auction-image" alt="Auction"/>
                         <h2> {this.props.auction.title} </h2>
                         <p> {this.props.auction.serial_number} </p>
                     </div> 
