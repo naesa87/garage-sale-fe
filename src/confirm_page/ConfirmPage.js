@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios/index";
 
-const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/apasdasi';
+const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
 export default class ConfirmPage extends Component {
 
@@ -36,6 +36,9 @@ export default class ConfirmPage extends Component {
     }
 
     render() {
+        if (this.state.submissionPassed) {
+            return ( <div>COMPLETE YEH</div>)
+        }
         return (
             <div>
                 {this.renderNotification()}
