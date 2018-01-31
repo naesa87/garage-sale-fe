@@ -1,10 +1,7 @@
 import React from 'react'
-import { configure, render } from 'enzyme';
+import { render } from 'enzyme';
 import Auction from '../src/auctions/Auction'
-import Adapter from 'enzyme-adapter-react-16';
 import {expect} from 'chai';
-
-configure({ adapter: new Adapter() });
 
 describe('Auction', () => {
     const auction = {
