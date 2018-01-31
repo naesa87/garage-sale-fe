@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import './App.css';
-import Navbar from "./header/Navbar";
+import React, {Component} from "react";
+import "./App.css";
+import Navbar from "./navbar/Navbar";
 import AuctionList from "./auctions/AuctionList";
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import CreateListing from "./create_listing/CreateListing";
-
+import ManageListings from "./manage_listings/ManageListings"
 
 class App extends Component {
 
@@ -15,6 +15,7 @@ class App extends Component {
                     <Navbar/>
                     <Switch>
                         <Route exact path='/' component={AuctionList}/>
+                        <Route exact path='/manage-listings' component={ManageListings}/>
                         <Route exact path='/create-listing' component={CreateListing}/>
                     </Switch>
                 </div>

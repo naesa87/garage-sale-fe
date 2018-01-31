@@ -9,8 +9,11 @@ class Navbar extends Component {
                 <div className="container-fluid">
                     <p className="navbar-brand navbar-name">G'day Chandler</p>
                     <div className="navbar-nav ml-auto">
-                        <li className="nav-item" id="manage-listings">
-                            <Link to={'/'} className="nav-link">Manage Listings</Link>
+                        <li className="nav-item basic-nav-item" id="view-listings">
+                            <Link to={'/'} className="nav-link">View Listings</Link>
+                        </li>
+                        <li className="nav-item basic-nav-item" id="manage-listings">
+                            <Link to={'/manage-listings'} className="nav-link">Manage Listings</Link>
                         </li>
                         <li className="nav-item" id="create-listings">
                             <Link to={'/create-listing'} className="nav-link">Create Listing</Link>
