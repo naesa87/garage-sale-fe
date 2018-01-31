@@ -1,6 +1,7 @@
 import React from 'react'
 import Auction from '../src/auctions/Auction'
 import {expect} from 'chai';
+import {StaticRouter} from 'react-router-dom'
 
 describe('Auction', () => {
     const auction = {
@@ -17,7 +18,10 @@ describe('Auction', () => {
     };
 
     it('renders the auction', () => {
-        const component = render(<Auction auction={auction} key={auction.id}/>);
+        const component = render(
+        <StaticRouter> 
+            <Auction auction={auction} key={auction.id}/> 
+        </StaticRouter>);
         expect(component.text()).to.contain("TestTitle")
     });
 });

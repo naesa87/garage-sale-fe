@@ -18,7 +18,7 @@ class App extends Component {
                         <Route exact path='/' component={AuctionList}/>
                         <Route exact path='/manage-listings' component={ManageListings}/>
                         <Route exact path='/create-listing' component={CreateListing}/>
-                        <Route exact path='/confirm-page' component={ConfirmPage}/>
+                        <Route exact path='/confirm-page/:id' component={ConfirmPage}/>
                     </Switch>
                 </div>
             </Router>

@@ -10,15 +10,21 @@ export default class Auction extends Component {
             : defaultLogo ;
     }
 
-    // confirmPurchase = (nextState, replace) => 
-    // replace('/foo')
-    // }
+    renderButton() {
+        if(this.props.auction.is_sold) {
+            return (
+                <div className="sold auction-btn"> SOLD </div>
+            )
+        }
+       return <Link to={{pathname: `/confirm-page/${this.props.auction.id}`, state: {auction: this.props.auction}}} className="auction-btn">Buy Now</Link>
+    }
 
     render() {
         return (
             <div className="col-md-5 auction">
                 <div className="auction-upper">
                     <div className="auction-heading">
+                    
                         <img src={this.renderImg(this.props.auction.images.data)} className="auction-image" alt="Auction"/>
                         <h2> {this.props.auction.title} </h2>
                         <p> {this.props.auction.serial_number} </p>
@@ -33,8 +39,7 @@ export default class Auction extends Component {
                     <h4>Location</h4>
                     <p> {this.props.auction.location} </p>
                 </div>
-                {/* <button className="auction-btn" onClick={this.confirmPurchase(this.props)}>Buy Now</button> */}
-                <Link to={{pathname: '/confirm-page', state: {auction: this.props.auction}}} className="auction-btn">Buy Now</Link>
+                {this.renderButton()}
             </div>
         )
     }
