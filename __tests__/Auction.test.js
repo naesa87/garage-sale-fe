@@ -20,12 +20,13 @@ describe('<Auction />', () => {
         serial_number: "1234",
                 spec:  "TestSpec",
             location:  "TestLocation",
-            condition: "Condition"
+            condition: "Condition",
+            id: 1
     };
 
 
     it('allows us to set all props', () => {
-        const auctionWrapper = mount(<Auction params={auction}/>);
+        const auctionWrapper = mount(<Auction auction={auction} key={auction.id}/>);
         expect(auctionWrapper.props().price).to.equal('100');
     });
 });
