@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import defaultLogo from './portraitImage.jpg';
+import {Link} from 'react-router-dom';
 
 export default class Auction extends Component {
 
@@ -8,6 +9,10 @@ export default class Auction extends Component {
             ? images[0].rawImageData
             : defaultLogo ;
     }
+
+    // confirmPurchase = (nextState, replace) => 
+    // replace('/foo')
+    // }
 
     render() {
         return (
@@ -28,7 +33,8 @@ export default class Auction extends Component {
                     <h4>Location</h4>
                     <p> {this.props.auction.location} </p>
                 </div>
-                <button className="auction-btn">Buy Now</button>
+                {/* <button className="auction-btn" onClick={this.confirmPurchase(this.props)}>Buy Now</button> */}
+                <Link to={{pathname: '/confirm-page', state: {auction: this.props.auction}}} className="auction-btn">Buy Now</Link>
             </div>
         )
     }

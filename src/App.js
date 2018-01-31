@@ -5,6 +5,7 @@ import AuctionList from "./auctions/AuctionList";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import CreateListing from "./create_listing/CreateListing";
 import ManageListings from "./manage_listings/ManageListings"
+import ConfirmPage from "./confirm_page/ConfirmPage";
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
                         <Route exact path='/' component={AuctionList}/>
                         <Route exact path='/manage-listings' component={ManageListings}/>
                         <Route exact path='/create-listing' component={CreateListing}/>
+                        <Route exact path='/confirm-page' component={ConfirmPage}/>
                     </Switch>
                 </div>
             </Router>
