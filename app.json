@@ -1,0 +1,15 @@
+{
+  "name": "garage-sale-fe",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ]
+}
