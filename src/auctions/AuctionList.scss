@@ -2,6 +2,16 @@
     padding: 0px;
 }
 
+.auction-list {
+    h4 {
+        font-weight: 300;
+    }
+}
+
+.no-available-listings {
+    margin-bottom: 20px;
+}
+
 .auction {
     border: #A9A9A9 solid 1px;
     margin: 25px 0;
