@@ -84,10 +84,8 @@ export default class ConfirmPage extends Component {
                         </div>
                         <div className="instructions">
                             <p> By clicking "Confirm Purchase", you are committing to purchase
-                            this item.
-                                <p> You'll get an email with how to make payment and arrange shipping
-                                if needed
-                                </p>
+                            this item. You'll get an email with how to make payment and arrange shipping
+                            if needed
                             </p>
                         </div>
                         <button className="btn-purchase btn-primary btn" onClick={this.commitPurchase}> Confirm Purchase </button>
