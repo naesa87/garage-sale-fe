@@ -36,7 +36,6 @@ export default class CreateListing extends Component {
     onSubmit = (e) => {
         e.preventDefault();
         var errors = this.validate();
-        console.log(this.refs.title);
         if (Object.keys(errors).length !== 0) {
             this.setState({
                 errors: errors
@@ -132,10 +131,10 @@ export default class CreateListing extends Component {
                 <div className="row justify-content-md-center">
                     <form onSubmit={this.onSubmit.bind(this)} id="form1" noValidate className="col-md-8">
                         <div className="form-group">
-                            <FormControlGroup label="Title" value={title} errors={errors} change={this.onChange} name="title" />
-                            <FormControlGroup label="Serial Number" value={serial_number} errors={errors} change={this.onChange} name="serial_number" />
-                            <FormControlGroup label="Price" value={price} errors={errors} change={this.onChange} name="price" isNumeric="true"/>
-                            <FormControlGroup label="Specifications" value={spec} errors={errors} change={this.onChange} name="spec" />
+                            <FormControlGroup label="Title" value={title} errors={errors} change={this.onChange} name="title" key="title"/>
+                            <FormControlGroup label="Serial Number" value={serial_number} errors={errors} change={this.onChange} name="serial_number" key="serial-number" />
+                            <FormControlGroup label="Price" value={price} errors={errors} change={this.onChange} name="price" isNumeric="true" key="price"/>
+                            <FormControlGroup label="Specifications" value={spec} errors={errors} change={this.onChange} name="spec" key="spec" />
                             <div className="control-group">
                                 <div>
                                     <label htmlFor="condition">Condition (200 characters max)</label>
@@ -144,7 +143,7 @@ export default class CreateListing extends Component {
                                     <textarea onChange={this.onChange} rows="3" type="text" maxLength="200" value={condition} name="condition" id="condition" className={`form-control ${errors.condition ? "is-invalid" : ""}`} />
                                 </div>
                             </div>
-                            <FormControlGroup label="Location" value={location} errors={errors} change={this.onChange} name="location" />
+                            <FormControlGroup label="Location" value={location} errors={errors} change={this.onChange} name="location" key="location"/>
                             <div className="control-group">
                                 <div className="file-upload">
                                     <FileBase64 multiple={true} onDone={this.getFiles.bind(this)} data-buttonText="Your label here." className="file-upload" />
@@ -154,8 +153,8 @@ export default class CreateListing extends Component {
                             <div className="alerts">
                             {this.renderNotification()}
                             </div>
-                            <div className="post-button">
-                                <button type="submit" className="mb-4 btn btn-primary" disabled={this.state.submitted}> {this.state.submitted ? "Submitted" : "Post Listing"} </button>
+                            <div className="post-button-container">
+                                <button type="submit" className="mb-4 btn btn-primary post-button" disabled={this.state.submitted}> {this.state.submitted ? "Submitted" : "Post Listing"} </button>
                             </div>
                         </div>
                     </form>

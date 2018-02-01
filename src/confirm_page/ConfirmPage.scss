@@ -1,0 +1,31 @@
+.confirm-page {
+    margin-top: 60px;
+
+    .confirmation-message {
+        border: #A9A9A9 solid 1px;
+        padding: 20px 0;
+
+        .item-details {
+            margin-bottom: 15px;
+            font-size: 25px;
+
+            .bold {
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            .uppercase {
+                text-transform: uppercase;
+            }
+        }
+
+        .btn-purchase {
+            text-transform: uppercase;
+            background-color: #1A73BA;
+        }
+
+        .instructions {
+            margin: 0 40px;
+        }
+    }
+}

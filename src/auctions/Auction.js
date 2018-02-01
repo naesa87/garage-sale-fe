@@ -28,8 +28,6 @@ export default class Auction extends Component {
     }
 
     renderImgCount() {
-        console.log("ASDASDSA")
-        console.log(this.images.length)
         if(this.images.length === 1 ){
            return "";
         }
