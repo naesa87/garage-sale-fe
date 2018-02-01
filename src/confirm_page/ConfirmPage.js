@@ -8,12 +8,13 @@ export default class ConfirmPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            submissionPassed: false
+            submissionPassed: false,
+            submissionFailed: false
         }
     }
 
     renderNotification = () => {
-        if (!this.state.submissionPassed) {
+        if (this.state.submissionFailed) {
             return (
                 <div className="alert alert-danger" role="alert"> Network Error. Please try again </div>
             )
@@ -30,7 +31,7 @@ export default class ConfirmPage extends Component {
             }).catch((error) => {
                 console.log(error)
                 this.setState({
-                    submissionPassed:false
+                    submissionFailed: true
                 });
             });
     }
