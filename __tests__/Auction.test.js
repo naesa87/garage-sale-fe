@@ -22,7 +22,7 @@ describe('Auction', () => {
 
     it('renders the auction', () => {
         const component = render(
-        <StaticRouter> 
+        <StaticRouter context={{needed:"forTest"}}>
             <Auction auction={auction} key={auction.id}/> 
         </StaticRouter>);
         expect(component.text()).to.contain("TestTitle")
