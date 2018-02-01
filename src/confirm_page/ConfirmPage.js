@@ -53,7 +53,22 @@ export default class ConfirmPage extends Component {
 
     render() {
         if (this.state.submissionPassed) {
-            return (<div>COMPLETE YEH</div>)
+            return (
+                <div className="container confirm-page">
+                    <div className="row justify-content-md-center">
+                        <div className="col-md-8 confirmation-message">
+                            <div className="item-details">
+                                <span className="bold"> Purchase Confirmed </span>
+                            </div>
+                            <div className="instructions">
+                                <p> An email is on its way to your inbox.</p>
+                                <p> If you don't receive the email within 24 horus, email Dan Gower (dgower@thougthworks.com) </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            )
         }
         const { title, serial_number, price } = this.state.listing;
         return (
