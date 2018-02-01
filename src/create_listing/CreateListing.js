@@ -131,7 +131,6 @@ export default class CreateListing extends Component {
                 </div>
                 <div className="row justify-content-md-center">
                     <form onSubmit={this.onSubmit.bind(this)} id="form1" noValidate className="col-md-8">
-                        {this.renderNotification()}
                         <div className="form-group">
                             <FormControlGroup label="Title" value={title} errors={errors} change={this.onChange} name="title" />
                             <FormControlGroup label="Serial Number" value={serial_number} errors={errors} change={this.onChange} name="serial_number" />
@@ -151,6 +150,9 @@ export default class CreateListing extends Component {
                                     <FileBase64 multiple={true} onDone={this.getFiles.bind(this)} data-buttonText="Your label here." className="file-upload" />
                                 </div>
                                 {this.renderSelectedImgList()}
+                            </div>
+                            <div className="alerts">
+                            {this.renderNotification()}
                             </div>
                             <div className="post-button">
                                 <button type="submit" className="mb-4 btn btn-primary" disabled={this.state.submitted}> {this.state.submitted ? "Submitted" : "Post Listing"} </button>
