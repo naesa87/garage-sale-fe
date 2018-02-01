@@ -6,7 +6,10 @@ import {StaticRouter} from 'react-router-dom'
 describe('Auction', () => {
     const auction = {
         images: {
-            data: "empty.jpg"
+            data: [
+                {rawImageData: "data:image/jpeg;base64,/9j/garble1/2Q==", name: "image1.jpg", id: 7, auction_id: 1},
+                {rawImageData: "data:image/jpeg;base64,/9j/garble2/2Q==", name: "image2.jpg", id: 8, auction_id: 1}
+            ]
         },
         price: '100',
         title: "TestTitle",
