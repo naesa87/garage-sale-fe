@@ -4,6 +4,15 @@
     font-weight: 700;
 }
 
+.selected {
+    text-decoration: underline;
+    &.nav-link {
+        &:hover, &:focus, &.visited {
+            text-decoration: underline;
+        }
+    }
+}
+
 .basic-nav-item {
     a {
         color: black;
