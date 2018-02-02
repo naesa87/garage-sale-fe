@@ -69,7 +69,7 @@ export default withAuth(class ConfirmPage extends Component {
                             </div>
                             <div className="instructions">
                                 <p> An email is on its way to your inbox.</p>
-                                <p> If you don't receive the email within 24 horus, email Dan Gower
+                                <p> If you don't receive the email within 24 hours, email Dan Gower
                                     (dgower@thougthworks.com) </p>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ export default withAuth(class ConfirmPage extends Component {
                         <div className="instructions">
                             <p> By clicking "Confirm Purchase", you are committing to purchase
                                 this item. You'll get an email with how to make payment and arrange shipping
-                                if needed
+                                if needed.
                             </p>
                         </div>
                         <button className="btn-purchase btn-primary btn" onClick={this.commitPurchase}> Confirm
