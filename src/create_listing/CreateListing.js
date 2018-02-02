@@ -103,17 +103,17 @@ export default class CreateListing extends Component {
     renderNotification = () => {
         if (this.state.submitted === true) { 
             return (
-                <div className="alert alert-success" role="alert"> Submitted! </div>
+                <div className="alert alert-success" role="alert"> This listing has been published! </div>
             )
         }
         else if (this.state.submissionFailed) {
             return (
-                <div className="alert alert-danger" role="alert"> Network Error. Please try again </div>
+                <div className="alert alert-danger" role="alert"> Network Error. Please try again. </div>
             )
         }
         else if (Object.keys(this.state.errors).length !== 0) {
             return (
-            <div className="alert alert-danger" role="alert"> Please fix errors below </div>
+            <div className="alert alert-danger" role="alert"> Please fill in required fields before submitting. </div>
             )
         }
     }
