@@ -3,13 +3,11 @@ import Auction from "./Auction"
 import './AuctionList.css';
 import axios from "axios/index";
 import _ from 'lodash'
-import {withAuth} from '@okta/okta-react';
-import {checkAuthentication} from "../auth/Helpers";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
 
-export default withAuth(class AuctionList extends Component {
+export default class AuctionList extends Component {
 
     constructor(props) {
         super(props)
@@ -17,29 +15,6 @@ export default withAuth(class AuctionList extends Component {
             isLoading: false,
             auctionList: [],
             authenticated: null
-        }
-        this.checkAuthentication = checkAuthentication.bind(this);
-        this.checkAuthentication();
-    }
-
-    async componentDidMount() {
-        try {
-            var config = {
-                headers: {
-                    Authorization: 'Bearer ' + await this.props.auth.getAccessToken()
-                }
-            }
-            await axios.get(BASE_URL + "/auctions",config)
-                .then(this.setData.bind(this))
-                .then(() => {
-                    this.setState({isLoading: false});
-                })
-                .catch(function (error) {
-                    console.log(BASE_URL);
-                    console.log(error);
-                });
-        } catch (err) {
-            // handle error as needed
         }
     }
 
@@ -66,12 +41,8 @@ export default withAuth(class AuctionList extends Component {
     }
 
     render() {
-        if (this.state.authenticated === null) return null;
         if (this.state.isLoading) {
             return null
-        }
-        if (this.state.authenticated) {
-
         }
         let availableListings = [];
         let soldListings = [];
@@ -128,4 +99,4 @@ export default withAuth(class AuctionList extends Component {
 
         )
     }
-});
+}

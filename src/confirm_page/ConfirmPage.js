@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import axios from "axios/index";
 import "./ConfirmPage.css";
-import {withAuth} from '@okta/okta-react';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
-export default withAuth(class ConfirmPage extends Component {
+export default class ConfirmPage extends Component {
 
     constructor(props) {
         super(props);
@@ -40,13 +39,8 @@ export default withAuth(class ConfirmPage extends Component {
         });
     }
 
-    async componentDidMount() {
-        var config = {
-            headers: {
-                Authorization: 'Bearer ' + await this.props.auth.getAccessToken()
-            }
-        }
-        await axios.get(BASE_URL + "/auctions/" + this.props.match.params.id,config)
+     componentWillMount() {
+         axios.get(BASE_URL + "/auctions/" + this.props.match.params.id)
             .then((response) => {
                 this.setState({listing: response.data.data})
             })
@@ -105,4 +99,4 @@ export default withAuth(class ConfirmPage extends Component {
         );
     }
 
-});
+}

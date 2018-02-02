@@ -4,15 +4,13 @@ import './CreateListing.css';
 import FileBase64 from 'react-file-base64';
 import _ from 'lodash';
 import FormControlGroup from './FormControlGroup';
-import {withAuth} from '@okta/okta-react';
-import {checkAuthentication} from "../auth/Helpers";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
 
 // https://blog.stvmlbrn.com/2017/04/07/submitting-form-data-with-react.html
 // http://blog.revathskumar.com/2015/07/submit-a-form-with-react.html
-export default withAuth(class CreateListing extends Component {
+export default class CreateListing extends Component {
 
     constructor(props) {
         super(props);
@@ -26,22 +24,10 @@ export default withAuth(class CreateListing extends Component {
             files: [],
             errors: [],
             submitted: false,
-            submissionFailed: false,
-            authToken: ""
+            submissionFailed: false
         };
-        this.checkAuthentication = checkAuthentication.bind(this);
-        this.checkAuthentication();
     }
 
-    async componentDidMount() {
-        try {
-
-            this.state.authToken = await this.props.auth.getAccessToken()
-
-        } catch (err) {
-            // handle error as needed
-        }
-    }
 
     getFiles(files) {
         this.setState({files: files});
@@ -56,12 +42,7 @@ export default withAuth(class CreateListing extends Component {
             });
             return;
         }
-        var config = {
-            headers: {
-                Authorization: 'Bearer ' + this.state.authToken
-            }
-        }
-        axios.post(BASE_URL + "/auctions", {auction: this.state}, config)
+        axios.post(BASE_URL + "/auctions", {auction: this.state})
             .then((result) => {
                 console.log(result)
                 this.setState({
@@ -193,4 +174,4 @@ export default withAuth(class CreateListing extends Component {
 
         );
     }
-});
+}
