@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from "axios/index";
 import './CreateListing.css';
 import FileBase64 from 'react-file-base64';
 import _ from 'lodash';
 import FormControlGroup from './FormControlGroup';
 import {withAuth} from '@okta/okta-react';
+import {checkAuthentication} from "../auth/Helpers";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
@@ -25,26 +26,42 @@ export default withAuth(class CreateListing extends Component {
             files: [],
             errors: [],
             submitted: false,
-            submissionFailed: false
+            submissionFailed: false,
+            authToken: ""
         };
+        this.checkAuthentication = checkAuthentication.bind(this);
+        this.checkAuthentication();
+    }
+
+    async componentDidMount() {
+        try {
+
+            this.state.authToken = await this.props.auth.getAccessToken()
+
+        } catch (err) {
+            // handle error as needed
+        }
     }
 
     getFiles(files) {
-        this.setState({ files: files });
-        console.log(this.state.files);
+        this.setState({files: files});
     }
 
     onSubmit = (e) => {
         e.preventDefault();
         var errors = this.validate();
-        console.log(this.refs.title);
         if (Object.keys(errors).length !== 0) {
             this.setState({
                 errors: errors
             });
             return;
         }
-        axios.post(BASE_URL + "/auctions", { auction: this.state })
+        var config = {
+            headers: {
+                Authorization: 'Bearer ' + this.state.authToken
+            }
+        }
+        axios.post(BASE_URL + "/auctions", {auction: this.state}, config)
             .then((result) => {
                 console.log(result)
                 this.setState({
@@ -52,11 +69,11 @@ export default withAuth(class CreateListing extends Component {
                     submitted: true
                 });
             }).catch((error) => {
-                console.log(error)
-                this.setState({
-                    submissionFailed:true
-                });
+            console.log(error)
+            this.setState({
+                submissionFailed: true
             });
+        });
     }
 
     validate = () => {
@@ -96,14 +113,14 @@ export default withAuth(class CreateListing extends Component {
                 )
             });
             return (<div className="filenames">
-                {imageListHtml}
-            </div>
+                    {imageListHtml}
+                </div>
             );
         }
     }
 
     renderNotification = () => {
-        if (this.state.submitted === true) { 
+        if (this.state.submitted === true) {
             return (
                 <div className="alert alert-success" role="alert"> Submitted! </div>
             )
@@ -115,48 +132,58 @@ export default withAuth(class CreateListing extends Component {
         }
         else if (Object.keys(this.state.errors).length !== 0) {
             return (
-            <div className="alert alert-danger" role="alert"> Please fix errors below </div>
+                <div className="alert alert-danger" role="alert"> Please fix errors below </div>
             )
         }
     }
 
     render() {
-        const { location, spec, condition, serial_number, title, price, errors } = this.state;
+        const {location, spec, condition, serial_number, title, price, errors} = this.state;
         return (
             <div className="container">
                 <div className="row justify-content-md-center">
                     <h3 className="create-listing-heading col-md-8"> Create Listing</h3>
-                    <p className="create-listing-hint col-md-8"> Hint: Reference "About this Mac" on the machine you want to sell for assistance
-            with the following details. All fields are required.
-            </p>
+                    <p className="create-listing-hint col-md-8"> Hint: Reference "About this Mac" on the machine you
+                        want to sell for assistance
+                        with the following details. All fields are required.
+                    </p>
                 </div>
                 <div className="row justify-content-md-center">
                     <form onSubmit={this.onSubmit.bind(this)} id="form1" noValidate className="col-md-8">
                         <div className="form-group">
-                            <FormControlGroup label="Title" value={title} errors={errors} change={this.onChange} name="title" />
-                            <FormControlGroup label="Serial Number" value={serial_number} errors={errors} change={this.onChange} name="serial_number" />
-                            <FormControlGroup label="Price" value={price} errors={errors} change={this.onChange} name="price" isNumeric="true"/>
-                            <FormControlGroup label="Specifications" value={spec} errors={errors} change={this.onChange} name="spec" />
+                            <FormControlGroup label="Title" value={title} errors={errors} change={this.onChange}
+                                              name="title" key="title"/>
+                            <FormControlGroup label="Serial Number" value={serial_number} errors={errors}
+                                              change={this.onChange} name="serial_number" key="serial-number"/>
+                            <FormControlGroup label="Price" value={price} errors={errors} change={this.onChange}
+                                              name="price" isNumeric="true" key="price"/>
+                            <FormControlGroup label="Specifications" value={spec} errors={errors} change={this.onChange}
+                                              name="spec" key="spec"/>
                             <div className="control-group">
                                 <div>
                                     <label htmlFor="condition">Condition (200 characters max)</label>
                                 </div>
                                 <div className="controls textarea_wrapper">
-                                    <textarea onChange={this.onChange} rows="3" type="text" maxLength="200" value={condition} name="condition" id="condition" className={`form-control ${errors.condition ? "is-invalid" : ""}`} />
+                                    <textarea onChange={this.onChange} rows="3" type="text" maxLength="200"
+                                              value={condition} name="condition" id="condition"
+                                              className={`form-control ${errors.condition ? "is-invalid" : ""}`}/>
                                 </div>
                             </div>
-                            <FormControlGroup label="Location" value={location} errors={errors} change={this.onChange} name="location" />
+                            <FormControlGroup label="Location" value={location} errors={errors} change={this.onChange}
+                                              name="location" key="location"/>
                             <div className="control-group">
                                 <div className="file-upload">
-                                    <FileBase64 multiple={true} onDone={this.getFiles.bind(this)} data-buttonText="Your label here." className="file-upload" />
+                                    <FileBase64 multiple={true} onDone={this.getFiles.bind(this)}
+                                                data-buttonText="Your label here." className="file-upload"/>
                                 </div>
                                 {this.renderSelectedImgList()}
                             </div>
                             <div className="alerts">
-                            {this.renderNotification()}
+                                {this.renderNotification()}
                             </div>
-                            <div className="post-button">
-                                <button type="submit" className="mb-4 btn btn-primary" disabled={this.state.submitted}> {this.state.submitted ? "Submitted" : "Post Listing"} </button>
+                            <div className="post-button-container">
+                                <button type="submit" className="mb-4 btn btn-primary post-button"
+                                        disabled={this.state.submitted}> {this.state.submitted ? "Submitted" : "Post Listing"} </button>
                             </div>
                         </div>
                     </form>

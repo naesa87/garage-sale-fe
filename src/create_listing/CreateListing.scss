@@ -56,6 +56,10 @@ label {
     text-transform: uppercase;
 }
 
-.post-button {
+.post-button-container {
     clear: left;
+
+    .post-button {
+        background-color: #1A73BA;
+    }
 }
