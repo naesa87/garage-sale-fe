@@ -4,13 +4,14 @@ import './CreateListing.css';
 import FileBase64 from 'react-file-base64';
 import _ from 'lodash';
 import FormControlGroup from './FormControlGroup';
+import {withAuth} from '@okta/okta-react';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
 
 // https://blog.stvmlbrn.com/2017/04/07/submitting-form-data-with-react.html
 // http://blog.revathskumar.com/2015/07/submit-a-form-with-react.html
-export default class CreateListing extends Component {
+export default withAuth(class CreateListing extends Component {
 
     constructor(props) {
         super(props);
@@ -165,4 +166,4 @@ export default class CreateListing extends Component {
 
         );
     }
-}
+});

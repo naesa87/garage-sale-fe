@@ -21,3 +21,10 @@
 
   * [Staging]()
   * [Prod]()
+
+## OKTA Integration
+
+To setup an OKTA dev account, follow the below steps
+
+#Okta Developer
+1. Navigate to  [OCTA Developer](https://developer.okta.com/signup/) and create an account

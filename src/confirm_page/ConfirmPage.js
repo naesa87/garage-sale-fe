@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from "axios/index";
-
+import {withAuth} from '@okta/okta-react';
 const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:4000/api';
 
-export default class ConfirmPage extends Component {
+export default withAuth(class ConfirmPage extends Component {
 
     constructor(props) {
         super(props);
@@ -23,7 +23,12 @@ export default class ConfirmPage extends Component {
 
     commitPurchase = () => {
         const itemId = this.props.match.params.id;
-        axios.put(BASE_URL + "/auctions/" + itemId, { auction: { is_sold: true}})
+        var config = {
+            headers: {
+                Authorization: 'Bearer ' + this.props.auth.getAccessToken()
+        }
+    }
+        axios.put(BASE_URL + "/auctions/" + itemId, { auction: { is_sold: true}},config)
             .then((result) => {
                 this.setState({
                     submissionPassed: true
@@ -49,4 +54,4 @@ export default class ConfirmPage extends Component {
         );
     }
 
-}
+});
